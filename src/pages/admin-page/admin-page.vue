@@ -2,8 +2,7 @@
 import { onMounted } from 'vue'
 import { StorageControl } from '@/storage/local-storage/local-storage'
 import AdminBookingCard from './components/admin-booking-card.vue'
-import { bookings } from '@/storage/stores/bookings.ts'
-import type { Booking } from '@/templates/booking.ts'
+import { bookings } from '@/storage/stores/store.ts'
 
 onMounted(() => {
   bookings.value = StorageControl.loadStorage()

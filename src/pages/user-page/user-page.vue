@@ -3,9 +3,9 @@ import { StorageControl } from '@/storage/local-storage/local-storage'
 import type { Booking } from '@/templates/booking'
 import { ref } from 'vue'
 import UserBookingCard from '@/pages/user-page/components/user-booking-card.vue'
-import { madebookings } from '@/storage/stores/bookings'
+import { madebookings, rooms, timeSlots } from '@/storage/stores/store'
 
-let latestIndex: number = 0
+let latestIndex: number = 4
 
 const form = ref<Omit<Booking, 'id'>>({
   title: '',
@@ -64,14 +64,10 @@ function handleSubmit(): void {
 
             <div class="mb-3">
               <label for="place" class="form-label fw-semibold text-secondary">Room / Place</label>
-              <input
-                id="place"
-                v-model="form.place"
-                type="text"
-                class="form-control"
-                required
-                placeholder="Conference Room A"
-              />
+              <select id="place" v-model="form.place" class="form-select" required>
+                <option value="" disabled>Select a room</option>
+                <option v-for="room in rooms" :key="room" :value="room">{{ room }}</option>
+              </select>
             </div>
 
             <div class="row">
@@ -82,7 +78,10 @@ function handleSubmit(): void {
 
               <div class="col-6 mb-4">
                 <label for="time" class="form-label fw-semibold text-secondary">Time</label>
-                <input id="time" v-model="form.time" type="time" class="form-control" required />
+                <select id="time" v-model="form.time" class="form-select" required>
+                  <option value="" disabled>Select a time</option>
+                  <option v-for="slot in timeSlots" :key="slot" :value="slot">{{ slot }}</option>
+                </select>
               </div>
             </div>
 
