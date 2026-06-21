@@ -10,7 +10,7 @@ import { Navigator } from '@/router'
       class="btn rounded-pill px-4 py-2"
       @click="Navigator.navigateToUser()"
     >
-      User Page
+      Kullanıcı Sayfası
     </button>
 
     <button
@@ -19,7 +19,7 @@ import { Navigator } from '@/router'
       class="btn rounded-pill px-4 py-2"
       @click="Navigator.navigateToAdmin()"
     >
-      Admin Panel
+      Yönetici Paneli
     </button>
   </div>
 </template>

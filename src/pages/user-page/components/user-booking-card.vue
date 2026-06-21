@@ -35,10 +35,10 @@ function cancelEdit(): void {
 
         <div
           v-for="[label, value] in [
-            ['Name', booking.name],
-            ['Room', booking.place],
-            ['Date', booking.date],
-            ['Time', booking.time],
+            ['Ad', booking.name],
+            ['Oda', booking.place],
+            ['Tarih', booking.date],
+            ['Saat', booking.time],
           ]"
           :key="label"
           class="d-flex justify-content-between align-items-center"
@@ -52,25 +52,31 @@ function cancelEdit(): void {
             class="btn btn-outline-secondary rounded-pill px-3 py-1 fw-semibold btn-sm"
             @click="isEditing = true"
           >
-            Edit
+            Düzenle
           </button>
           <button
             class="btn btn-outline-danger rounded-pill px-3 py-1 fw-semibold btn-sm"
             @click="handleDelete"
           >
-            Delete
+            Sil
           </button>
         </div>
       </template>
 
       <template v-else>
-        <h4 class="card-title fw-bold text-primary mb-3">Edit Booking</h4>
+        <h4 class="card-title fw-bold text-primary mb-3">Rezervasyonu Düzenle</h4>
 
         <form @submit.prevent="handleSave" class="d-flex flex-column gap-2">
           <div class="row g-2">
             <div class="col-12">
-              <label class="form-label small fw-semibold text-secondary mb-1">Title</label>
+              <label
+                :for="`edit-title-${booking.id}`"
+                class="form-label small fw-semibold text-secondary mb-1"
+              >
+                Başlık
+              </label>
               <input
+                :id="`edit-title-${booking.id}`"
                 v-model="editForm.title"
                 type="text"
                 class="form-control form-control-sm"
@@ -78,8 +84,14 @@ function cancelEdit(): void {
               />
             </div>
             <div class="col-12">
-              <label class="form-label small fw-semibold text-secondary mb-1">Name</label>
+              <label
+                :for="`edit-name-${booking.id}`"
+                class="form-label small fw-semibold text-secondary mb-1"
+              >
+                Ad
+              </label>
               <input
+                :id="`edit-name-${booking.id}`"
                 v-model="editForm.name"
                 type="text"
                 class="form-control form-control-sm"
@@ -87,23 +99,50 @@ function cancelEdit(): void {
               />
             </div>
             <div class="col-12">
-              <label class="form-label small fw-semibold text-secondary mb-1">Room</label>
-              <select v-model="editForm.place" class="form-select form-select-sm" required>
+              <label
+                :for="`edit-place-${booking.id}`"
+                class="form-label small fw-semibold text-secondary mb-1"
+              >
+                Oda
+              </label>
+              <select
+                :id="`edit-place-${booking.id}`"
+                v-model="editForm.place"
+                class="form-select form-select-sm"
+                required
+              >
                 <option v-for="room in rooms" :key="room" :value="room">{{ room }}</option>
               </select>
             </div>
             <div class="col-6">
-              <label class="form-label small fw-semibold text-secondary mb-1">Date</label>
+              <label
+                :for="`edit-date-${booking.id}`"
+                class="form-label small fw-semibold text-secondary mb-1"
+              >
+                Tarih
+              </label>
               <input
+                :id="`edit-date-${booking.id}`"
                 v-model="editForm.date"
                 type="date"
                 class="form-control form-control-sm"
+                :min="new Date().toISOString().split('T')[0]"
                 required
               />
             </div>
             <div class="col-6">
-              <label class="form-label small fw-semibold text-secondary mb-1">Time</label>
-              <select v-model="editForm.time" class="form-select form-select-sm" required>
+              <label
+                :for="`edit-time-${booking.id}`"
+                class="form-label small fw-semibold text-secondary mb-1"
+              >
+                Saat
+              </label>
+              <select
+                :id="`edit-time-${booking.id}`"
+                v-model="editForm.time"
+                class="form-select form-select-sm"
+                required
+              >
                 <option v-for="time in timeSlots" :key="time" :value="time">{{ time }}</option>
               </select>
             </div>
@@ -115,9 +154,9 @@ function cancelEdit(): void {
               class="btn btn-sm btn-link text-secondary text-decoration-none"
               @click="cancelEdit"
             >
-              Cancel
+              İptal
             </button>
-            <button type="submit" class="btn btn-sm btn-primary rounded-pill px-3">Save</button>
+            <button type="submit" class="btn btn-sm btn-primary rounded-pill px-3">Kaydet</button>
           </div>
         </form>
       </template>

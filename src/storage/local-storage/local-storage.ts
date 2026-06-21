@@ -5,33 +5,33 @@ let latestIndex: number = 0
 const dummyData: Array<Booking> = [
   {
     id: 0,
-    title: 'Sprint Planning',
+    title: 'Sprint Planlama',
     name: 'Aylin Kaya',
-    place: 'Conference Room A',
+    place: 'Toplantı Odası A',
     date: '2026-06-23',
     time: '09:00',
   },
   {
     id: 1,
-    title: 'Client Demo',
+    title: 'Müşteri Sunumu',
     name: 'Mert Demir',
-    place: 'Board Room',
+    place: 'Yönetim Odası',
     date: '2026-06-24',
     time: '14:00',
   },
   {
     id: 2,
-    title: '1:1 Check-in',
+    title: 'Bire Bir Kontrol',
     name: 'Zeynep Aksoy',
-    place: 'Meeting Room 1',
+    place: 'Toplantı Odası 1',
     date: '2026-06-25',
     time: '11:00',
   },
   {
     id: 3,
-    title: 'Design Review',
+    title: 'Tasarım İncelemesi',
     name: 'Can Yılmaz',
-    place: 'Conference Room B',
+    place: 'Toplantı Odası B',
     date: '2026-06-26',
     time: '13:30',
   },
@@ -49,7 +49,7 @@ export class StorageControl {
   }
 
   static addToStorage(booking: Booking): void {
-    console.log('Added to storage')
+    console.log('Depolamaya eklendi')
     localStorage.setItem(`booking-${latestIndex}`, JSON.stringify(booking))
     latestIndex++
   }

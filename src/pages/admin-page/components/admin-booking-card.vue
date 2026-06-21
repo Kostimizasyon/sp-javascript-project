@@ -19,10 +19,10 @@ function handleDelete(): void {
 
       <div
         v-for="[label, value] in [
-          ['Name', booking.name],
-          ['Room', booking.place],
-          ['Date', booking.date],
-          ['Time', booking.time],
+          ['Ad', booking.name],
+          ['Oda', booking.place],
+          ['Tarih', booking.date],
+          ['Saat', booking.time],
         ]"
         :key="label"
         class="d-flex justify-content-between align-items-center"
@@ -39,7 +39,7 @@ function handleDelete(): void {
           class="btn btn-outline-danger btn-sm rounded-pill px-3 fw-semibold"
           @click="handleDelete"
         >
-          Terminate
+          Sil
         </button>
       </div>
     </div>

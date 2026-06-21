@@ -1,4 +1,4 @@
-// stores/bookings.ts
+// Rezervasyon store'u
 import { ref } from 'vue'
 import { StorageControl } from '@/storage/local-storage/local-storage'
 import type { Booking } from '@/templates/booking'
@@ -31,9 +31,9 @@ export const timeSlots = [
 ]
 
 export const rooms = [
-  'Conference Room A',
-  'Conference Room B',
-  'Meeting Room 1',
-  'Meeting Room 2',
-  'Board Room',
+  'Toplantı Odası A',
+  'Toplantı Odası B',
+  'Toplantı Odası 1',
+  'Toplantı Odası 2',
+  'Yönetim Odası',
 ]
